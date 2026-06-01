@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro calendario de verano ☀️</title>
+    <style>
+        :root {
+            --bg-color: #f9f5f0;
+            --card-bg: #ffffff;
+            --primary-color: #d4a373;
+            --text-color: #4a4a4a;
+            --accent-color: #e76f51;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Contenido Principal */
+        #main-content {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #7a7a7a;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .day-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .day-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+        }
+
+        .day-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            background-color: #fffdfa;
+            padding: 0 20px;
+        }
+
+        .day-content p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+            white-space: pre-line;
+            margin-bottom: 20px;
+        }
+
+        .day-card.active .day-content {
+            max-height: 1000px;
+            padding: 10px 20px 20px 20px;
+            border-top: 1px linear-gradient(to right, var(--primary-color), transparent);
+        }
+
+        .day-card.active .icon {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <header>
+            <h1>Para mi niña ❤️</h1>
+            <p>Un mensaje para ti por cada día del verano</p>
+        </header>
+
+        <div class="container">
+            <div class="day-card">
+                <div class="day-header" onclick="toggleMessage(this)">
+                    <div class="day-info">
+                        <span class="date">1 de Junio</span>
+                        <span class="title">El inicio de nuestro verano</span>
+                    </div>
+                    <div class="icon">👇</div>
+                </div>
+                <div class="day-content">
+                    <p>Buenos días mi niña , queria heberte dado la sorpresa por la mañana pero entre la parcela y lo de Rodrigo no he podido hacerlo antes.
+                    Esto es un regalo para ti en el que quiero guardar todos los mensajitos que te suelo enviar por la mañana , la idea es tener cada día del verano un mensaje diferente para que no se haga tan repetitivo , he pensado que será un recuerdo bastante bonito. Cada día añadire un mensaje nuevo.
+                    Lo bueno es que podrás verlos las veces que quieras y los tendras ordenados por días como si fuera un calendario.
+                    También lo podemos usar para guardar cada momento especial que hayamos vivido juntos.
+
+                    Este es el primer mensaje en el que quiero recordarte lo mucho que te quiero mi niña.
+
+                    Espero que te guste la sorpresa. ¡Te quiero mucho cariño!</p>
+                </div>
+            </div>
+
+            </div>
+    </div>
+
+    <script>
+        function toggleMessage(element) {
+            const card = element.parentElement;
+            card.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
